@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["images.pexels.com"], // Allow external images from Pexels
+    domains: ["themewagon.github.io", "images.pexels.com"], // Add all allowed domains
   },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

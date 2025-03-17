@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import FoodItem from "@/components/food-item"
+import { useState } from "react";
+import FoodItem from "@/components/food-item";
 
-const categories = ["All", "Burger", "Pizza", "Pasta", "Fries"]
+const categories = ["All", "Burger", "Pizza", "Pasta", "Fries"];
 
 const menuItems = [
   {
@@ -12,7 +12,7 @@ const menuItems = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab rem ut repellat non nam quibusdam magnam at fugiat vel dolor!",
     price: 20,
-    image: "/placeholder.svg?height=200&width=200",
+    image: "https://themewagon.github.io/feane/images/f1.png",
     category: "Pizza",
   },
   {
@@ -21,7 +21,7 @@ const menuItems = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab rem ut repellat non nam quibusdam magnam at fugiat vel dolor!",
     price: 20,
-    image: "/placeholder.svg?height=200&width=200",
+    image: "https://themewagon.github.io/feane/images/f7.png",
     category: "Burger",
   },
   {
@@ -30,7 +30,7 @@ const menuItems = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab rem ut repellat non nam quibusdam magnam at fugiat vel dolor!",
     price: 20,
-    image: "/placeholder.svg?height=200&width=200",
+    image: "https://themewagon.github.io/feane/images/f6.png",
     category: "Pizza",
   },
   {
@@ -39,7 +39,7 @@ const menuItems = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab rem ut repellat non nam quibusdam magnam at fugiat vel dolor!",
     price: 20,
-    image: "/placeholder.svg?height=200&width=200",
+    image: "https://themewagon.github.io/feane/images/f4.png",
     category: "Pasta",
   },
   {
@@ -48,7 +48,7 @@ const menuItems = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab rem ut repellat non nam quibusdam magnam at fugiat vel dolor!",
     price: 20,
-    image: "/placeholder.svg?height=200&width=200",
+    image: "https://themewagon.github.io/feane/images/f5.png",
     category: "Fries",
   },
   {
@@ -57,7 +57,7 @@ const menuItems = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab rem ut repellat non nam quibusdam magnam at fugiat vel dolor!",
     price: 20,
-    image: "/placeholder.svg?height=200&width=200",
+    image: "https://themewagon.github.io/feane/images/f3.png",
     category: "Pizza",
   },
   {
@@ -66,7 +66,7 @@ const menuItems = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab rem ut repellat non nam quibusdam magnam at fugiat vel dolor!",
     price: 20,
-    image: "/placeholder.svg?height=200&width=200",
+    image: "https://themewagon.github.io/feane/images/f2.png",
     category: "Burger",
   },
   {
@@ -75,25 +75,27 @@ const menuItems = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab rem ut repellat non nam quibusdam magnam at fugiat vel dolor!",
     price: 20,
-    image: "/placeholder.svg?height=200&width=200",
+    image: "https://themewagon.github.io/feane/images/f8.png",
     category: "Burger",
   },
   {
     id: 9,
-    name: "Delicious Pizza",
+    name: "Delicious Pasta",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab rem ut repellat non nam quibusdam magnam at fugiat vel dolor!",
     price: 20,
-    image: "/placeholder.svg?height=200&width=200",
-    category: "Pizza",
+    image: "https://themewagon.github.io/feane/images/f9.png",
+    category: "Pasta",
   },
-]
+];
 
 export default function MenuSection() {
-  const [activeCategory, setActiveCategory] = useState("All")
+  const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredItems =
-    activeCategory === "All" ? menuItems : menuItems.filter((item) => item.category === activeCategory)
+    activeCategory === "All"
+      ? menuItems
+      : menuItems.filter((item) => item.category === activeCategory);
 
   return (
     <section className="py-16">
@@ -105,7 +107,9 @@ export default function MenuSection() {
               <button
                 key={category}
                 className={`px-6 py-2 text-lg transition-colors ${
-                  activeCategory === category ? "text-primary font-semibold" : "text-gray-700 hover:text-primary"
+                  activeCategory === category
+                    ? "text-primary font-semibold"
+                    : "text-gray-700 hover:text-primary"
                 }`}
                 onClick={() => setActiveCategory(category)}
               >
@@ -122,6 +126,5 @@ export default function MenuSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-

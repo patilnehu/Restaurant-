@@ -1,14 +1,15 @@
-import Image from "next/image"
+import { ShoppingCart } from "lucide-react";
+import Image from "next/image";
 
 interface FoodItemProps {
   item: {
-    id: number
-    name: string
-    description: string
-    price: number
-    image: string
-    category: string
-  }
+    id: number;
+    name: string;
+    description: string;
+    price: number;
+    image: string;
+    category: string;
+  };
 }
 
 export default function FoodItem({ item }: FoodItemProps) {
@@ -16,15 +17,24 @@ export default function FoodItem({ item }: FoodItemProps) {
     <div className="bg-gray-200 rounded-lg overflow-hidden">
       <div className="flex justify-center p-4">
         <div className="relative w-48 h-48">
-          <Image src={item.image || "/placeholder.svg"} alt={item.name} fill className="object-contain" />
+          <Image
+            src={item.image || "/placeholder.svg"}
+            alt={item.name}
+            fill
+            className="object-contain"
+          />
         </div>
       </div>
       <div className="bg-secondary text-white p-6 rounded-t-2xl">
         <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
         <p className="text-gray-300 mb-4 text-sm">{item.description}</p>
-        <p className="text-lg font-bold">${item.price}</p>
+        <div className="flex justify-between items-center">
+          <span className="text-xl font-bold">${item.price}</span>
+          <button className="bg-primary hover:bg-primary/90 text-white p-3 rounded-full">
+            <ShoppingCart size={18} />
+          </button>
+        </div>
       </div>
     </div>
-  )
+  );
 }
-
