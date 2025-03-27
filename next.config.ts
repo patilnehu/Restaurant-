@@ -1,7 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["themewagon.github.io", "images.pexels.com"], // Add all allowed domains
+    domains: [
+      "themewagon.github.io",
+      "images.pexels.com",
+      "images.unsplash.com",
+    ], // Add all allowed domains
   },
 };
 

@@ -1,6 +1,6 @@
-import Image from "next/image"
-import { ShoppingCart } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import Image from "next/image";
+import { ShoppingCart } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const promotions = [
   {
@@ -17,7 +17,7 @@ const promotions = [
     image:
       "https://images.pexels.com/photos/3915857/pexels-photo-3915857.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
-]
+];
 
 export default function PromotionSection() {
   return (
@@ -25,8 +25,11 @@ export default function PromotionSection() {
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-center gap-8">
           {promotions.map((promo) => (
-            <div key={promo.id} className="bg-secondary rounded-lg p-6 flex items-center gap-6 w-full md:w-2/5">
-              <div className="relative w-24 h-24 flex-shrink-0">
+            <div
+              key={promo.id}
+              className="bg-secondary rounded-lg p-6 flex items-center gap-6 w-full md:w-2/5"
+            >
+              <div className="relative w-24 h-24 flex-shrink-0 transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-2 hover:scale-105 cursor-pointer">
                 <Image
                   src={promo.image || "/placeholder.svg"}
                   alt={promo.title}
@@ -40,7 +43,7 @@ export default function PromotionSection() {
                   {promo.discount} <sub>off</sub>
                 </h2>
                 <Button className="bg-primary hover:bg-primary/90 text-white rounded-full">
-                  Order Now <ShoppingCart className="ml-2 h-4 w-4" />
+                  Order Now <ShoppingCart className="ml-2 h-4 w-4 " />
                 </Button>
               </div>
             </div>
@@ -48,6 +51,5 @@ export default function PromotionSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }
-
