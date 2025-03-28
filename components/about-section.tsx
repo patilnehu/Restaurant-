@@ -29,13 +29,13 @@ export default function AboutSection() {
             <p className="text-gray-700 mb-6">
               There are many variations of passages of Lorem Ipsum available,
               but the majority have suffered alteration in some form, by
-              injected humour, or randomised words which don't look even
+              injected humour, or randomised words which don&apos;t look even
               slightly believable.
             </p>
             <p className="text-gray-700 mb-6">
               If you are going to use a passage of Lorem Ipsum, you need to be
-              sure there isn't anything embarrassing hidden in the middle of
-              text. All the Lorem Ipsum generators on the Internet tend to
+              sure there isn&apos;t anything embarrassing hidden in the middle
+              of text. All the Lorem Ipsum generators on the Internet tend to
               repeat predefined chunks as necessary.
             </p>
             <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 py-6">

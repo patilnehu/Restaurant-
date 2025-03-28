@@ -74,7 +74,6 @@
     @apply bg-background text-foreground;
   }
   .dancing-script {
-    font-family: "Dancing Script", cursive;
+    font-family: var(--font-dancing-script), cursive;
   }
 }
-
