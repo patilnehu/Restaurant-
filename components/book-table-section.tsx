@@ -19,74 +19,100 @@ export default function BookTableSection() {
         <div className="max-w-3xl mx-auto">
           <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="name" className="text-sm font-medium">
+              <label
+                htmlFor="name"
+                className="text-sm font-medium block text-white mb-2"
+              >
                 Your Name
               </label>
-              /
+              <input
+                id="name"
+                placeholder="John Doe"
+                className=" bg-secondary-foreground/10 border-gray-700 focus:border-primary p-2 rounded-md"
+              ></input>
             </div>
             <div className="space-y-2">
-              <label htmlFor="phone" className="text-sm font-medium">
+              <label
+                htmlFor="phone"
+                className="text-sm font-medium block text-white mb-2"
+              >
                 Phone Number
               </label>
-              {/* <Input
+              <input
                 id="phone"
                 placeholder="+1 123 456 7890"
-                className="bg-secondary-foreground/10 border-gray-700 focus:border-primary"
-              /> */}
+                className="bg-secondary-foreground/10 border-gray-700
+                focus:border-primary p-2 rounded-md"
+              ></input>
             </div>
             <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium">
+              <label
+                htmlFor="email"
+                className="text-sm font-medium block text-white mb-2"
+              >
                 Email
               </label>
-              {/* <Input
+              <input
                 id="email"
                 type="email"
                 placeholder="example@email.com"
-                className="bg-secondary-foreground/10 border-gray-700 focus:border-primary"
-              /> */}
+                className="bg-secondary-foreground/10 border-gray-700 focus:border-primary p-2 rounded-md"
+              ></input>
             </div>
             <div className="space-y-2">
-              <label htmlFor="people" className="text-sm font-medium">
+              <label
+                htmlFor="people"
+                className="text-sm font-medium block text-white mb-2"
+              >
                 How Many Persons?
               </label>
-              {/* <Input
+              <input
                 id="people"
                 type="number"
                 placeholder="2"
                 min="1"
-                className="bg-secondary-foreground/10 border-gray-700 focus:border-primary"
-              /> */}
+                className="bg-secondary-foreground/10 border-gray-700 focus:border-primary p-2 rounded-md"
+              ></input>
             </div>
             <div className="space-y-2">
-              <label htmlFor="date" className="text-sm font-medium">
+              <label
+                htmlFor="date"
+                className="text-sm font-medium block text-white mb-2"
+              >
                 Date
               </label>
-              {/* <Input
+              <input
                 id="date"
                 type="date"
-                className="bg-secondary-foreground/10 border-gray-700 focus:border-primary"
-              /> */}
+                className="bg-secondary-foreground/10 border-gray-700 focus:border-primary p-2 rounded-md"
+              ></input>
             </div>
             <div className="space-y-2">
-              <label htmlFor="time" className="text-sm font-medium">
+              <label
+                htmlFor="time"
+                className="text-sm font-medium block text-white mb-2"
+              >
                 Time
               </label>
-              {/* <Input
+              <input
                 id="time"
                 type="time"
-                className="bg-secondary-foreground/10 border-gray-700 focus:border-primary"
-              /> */}
+                className="bg-secondary-foreground/10 border-gray-700 focus:border-primary p-2 rounded-md"
+              ></input>
             </div>
-            <div className="space-y-2 md:col-span-2">
-              <label htmlFor="message" className="text-sm font-medium">
+            <div className="space-y-2 md:col-span-2 mt-6">
+              <label
+                htmlFor="message"
+                className="text-sm font-medium block text-white mb-2"
+              >
                 Special Request
               </label>
-              {/* <Textarea
+              <textarea
                 id="message"
                 placeholder="Any special requests or preferences?"
-                className="bg-secondary-foreground/10 border-gray-700 focus:border-primary"
+                className="bg-secondary-foreground/10 border-gray-700 focus:border-primary w-96  p-2 rounded-md"
                 rows={4}
-              /> */}
+              />
             </div>
             <div className="md:col-span-2 flex justify-center mt-4">
               <Button className="bg-primary hover:bg-primary/90 text-white rounded-full px-8 py-6 text-lg">
