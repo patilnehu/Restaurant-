@@ -23,7 +23,7 @@ export default function ProfilePage() {
         <h1 className="text-lg font-medium">My Profile</h1>
       </div>
 
-      <div className="p-4 space-y-4 w-3/4 mx-auto">
+      <div className="p-4 space-y-4 w-full md:w-3/4 mx-auto">
         {/* Profile Section */}
         <Card className="p-4">
           <div className="flex items-center justify-between  p-4 rounded-lg">
