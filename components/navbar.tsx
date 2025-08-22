@@ -71,7 +71,7 @@ export default function Navbar() {
   }, [pathname]);
 
   return (
-    <nav className="py-6 px-4 md:px-8 sticky top-0 z-50 bg-secondary/80 backdrop-blur-sm">
+    <nav className="py-6 px-4 md:px-8 w-full absolute top-0 z-50 bg-secondary/80 backdrop-blur-sm">
       <div className="container mx-auto flex justify-between items-center">
         <Link
           href="/"

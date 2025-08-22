@@ -4,10 +4,12 @@ import PromotionSection from "./components/promotion-section";
 import MenuSection from "./components/menu-section";
 import AboutSection from "@/components/about-section";
 import BookTableSection from "@/components/book-table-section";
+import Navbar from "@/components/navbar";
 
 export default function Home() {
   return (
     <>
+      <Navbar />
       {/* Hero Section */}
       <Image
         src="/hero-bg.jpg"

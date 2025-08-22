@@ -2,8 +2,6 @@ import type React from "react";
 import type { Metadata } from "next";
 import { Inter, Dancing_Script } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/navbar";
-
 import { AuthProvider } from "./context/auth-context";
 import ClientContent from "@/components/client-content";
 import { CartProvider } from "./context/card-context";
