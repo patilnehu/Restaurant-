@@ -2,48 +2,53 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation"; // ✅ for active route
 import { ShoppingCart, Search, User, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/app/context/card-context";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const pathname = usePathname(); // ✅ get current path
 
-  // Handle smooth scrolling
+  const { cart } = useCart();
+
+  // Handle smooth scrolling for same-page sections
   const scrollToSection = (sectionId: string) => {
-    setIsMenuOpen(false);
+    setIsMenuOpen(false); // ✅ close menu when clicked
+
+    if (pathname !== "/") {
+      window.location.href = `/#${sectionId}`;
+      return;
+    }
 
     const element = document.getElementById(sectionId);
     if (element) {
       const offsetTop =
         element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({
-        top: offsetTop - 100, // Offset for navbar height
+        top: offsetTop - 100,
         behavior: "smooth",
       });
     } else if (sectionId === "home") {
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
-  // Update active section based on scroll position
+  // Update active section based on scroll position (only on home page)
   useEffect(() => {
+    if (pathname !== "/") return;
+
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-
-      // Get all sections
       const sections = ["menu", "about", "book-table"];
 
-      // Check if we're at the top (home)
       if (scrollPosition < 100) {
         setActiveSection("home");
         return;
       }
 
-      // Find the current section
       for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
@@ -63,13 +68,13 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   return (
     <nav className="py-6 px-4 md:px-8 sticky top-0 z-50 bg-secondary/80 backdrop-blur-sm">
       <div className="container mx-auto flex justify-between items-center">
         <Link
-          href="#"
+          href="/"
           onClick={() => scrollToSection("home")}
           className="dancing-script text-4xl font-bold text-white"
         >
@@ -88,30 +93,33 @@ export default function Navbar() {
         <div className="hidden md:flex items-center space-x-8">
           <ul className="flex space-x-6">
             <li>
-              <button
-                onClick={() => scrollToSection("home")}
-                className={`${
-                  activeSection === "home" ? "text-yellow-400" : "text-white"
-                } hover:text-yellow-300 text-lg`}
-              >
-                Home
-              </button>
+              <Link href="/home">
+                <button
+                  className={`${
+                    pathname === "/home" ? "text-yellow-400" : "text-white"
+                  } hover:text-yellow-300 text-lg`}
+                >
+                  Home
+                </button>
+              </Link>
             </li>
             <li>
-              <button
-                onClick={() => scrollToSection("menu")}
-                className={`${
-                  activeSection === "menu" ? "text-yellow-400" : "text-white"
-                } hover:text-yellow-300 text-lg`}
-              >
-                Menu
-              </button>
+              <Link href="">
+                <button
+                  onClick={() => scrollToSection("menu")}
+                  className={`${
+                    pathname === "/menu" ? "text-yellow-400" : "text-white"
+                  } hover:text-yellow-300 text-lg`}
+                >
+                  Menu
+                </button>
+              </Link>
             </li>
             <li>
               <button
                 onClick={() => scrollToSection("about")}
                 className={`${
-                  activeSection === "about" ? "text-yellow-400" : "text-white"
+                  pathname === "/about-us" ? "text-yellow-400" : "text-white"
                 } hover:text-yellow-300 text-lg`}
               >
                 About
@@ -121,7 +129,7 @@ export default function Navbar() {
               <button
                 onClick={() => scrollToSection("book-table")}
                 className={`${
-                  activeSection === "book-table"
+                  pathname === "/" && activeSection === "book-table"
                     ? "text-yellow-400"
                     : "text-white"
                 } hover:text-yellow-300 text-lg`}
@@ -132,12 +140,31 @@ export default function Navbar() {
           </ul>
 
           <div className="flex items-center space-x-4 text-white">
-            <button className="hover:text-yellow-300">
-              <User size={20} />
-            </button>
-            <button className="hover:text-yellow-300">
-              <ShoppingCart size={20} />
-            </button>
+            <Link href="/profile">
+              <User
+                size={20}
+                className={`${
+                  pathname === "/profile"
+                    ? "text-yellow-400"
+                    : "hover:text-yellow-300"
+                }`}
+              />
+            </Link>
+            <Link href="/cart" className="relative">
+              <ShoppingCart
+                size={22}
+                className={`${
+                  pathname === "/cart"
+                    ? "text-yellow-400"
+                    : "hover:text-yellow-300"
+                }`}
+              />
+              {cart.length > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                  {cart.length}
+                </span>
+              )}
+            </Link>
             <button className="hover:text-yellow-300">
               <Search size={20} />
             </button>
@@ -155,7 +182,9 @@ export default function Navbar() {
                 <button
                   onClick={() => scrollToSection("home")}
                   className={`${
-                    activeSection === "home" ? "text-yellow-400" : "text-white"
+                    pathname === "/" && activeSection === "home"
+                      ? "text-yellow-400"
+                      : "text-white"
                   } hover:text-yellow-300 text-lg block w-full text-left`}
                 >
                   Home
@@ -165,7 +194,9 @@ export default function Navbar() {
                 <button
                   onClick={() => scrollToSection("menu")}
                   className={`${
-                    activeSection === "menu" ? "text-yellow-400" : "text-white"
+                    pathname === "/" && activeSection === "menu"
+                      ? "text-yellow-400"
+                      : "text-white"
                   } hover:text-yellow-300 text-lg block w-full text-left`}
                 >
                   Menu
@@ -175,7 +206,9 @@ export default function Navbar() {
                 <button
                   onClick={() => scrollToSection("about")}
                   className={`${
-                    activeSection === "about" ? "text-yellow-400" : "text-white"
+                    pathname === "/" && activeSection === "about"
+                      ? "text-yellow-400"
+                      : "text-white"
                   } hover:text-yellow-300 text-lg block w-full text-left`}
                 >
                   About
@@ -185,7 +218,7 @@ export default function Navbar() {
                 <button
                   onClick={() => scrollToSection("book-table")}
                   className={`${
-                    activeSection === "book-table"
+                    pathname === "/" && activeSection === "book-table"
                       ? "text-yellow-400"
                       : "text-white"
                   } hover:text-yellow-300 text-lg block w-full text-left`}
@@ -197,15 +230,47 @@ export default function Navbar() {
 
             <div className="flex items-center justify-between text-white">
               <div className="flex space-x-4">
-                <button className="hover:text-yellow-300">
-                  <User size={20} />
-                </button>
-                <button className="hover:text-yellow-300">
-                  <ShoppingCart size={20} />
-                </button>
-                <button className="hover:text-yellow-300">
-                  <Search size={20} />
-                </button>
+                <Link href="/profile" onClick={() => setIsMenuOpen(false)}>
+                  <User
+                    size={20}
+                    className={`${
+                      pathname === "/profile"
+                        ? "text-yellow-400"
+                        : "hover:text-yellow-300"
+                    }`}
+                  />
+                </Link>
+
+                <Link
+                  href="/cart"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="relative"
+                >
+                  <ShoppingCart
+                    size={20}
+                    className={`${
+                      pathname === "/cart"
+                        ? "text-yellow-400"
+                        : "hover:text-yellow-300"
+                    }`}
+                  />
+                  {cart.length > 0 && (
+                    <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+                      {cart.length}
+                    </span>
+                  )}
+                </Link>
+
+                <Link href="/search" onClick={() => setIsMenuOpen(false)}>
+                  <Search
+                    size={20}
+                    className={`${
+                      pathname === "/search"
+                        ? "text-yellow-400"
+                        : "hover:text-yellow-300"
+                    }`}
+                  />
+                </Link>
               </div>
               <Button className="bg-primary hover:bg-primary/90 text-white rounded-full">
                 ORDER ONLINE

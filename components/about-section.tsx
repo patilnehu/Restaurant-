@@ -14,10 +14,10 @@ export default function AboutSection() {
         </div>
 
         <div className="flex flex-col md:flex-row items-center gap-12">
-          <div className="md:w-1/2">
+          <div className="w-full md:w-1/2">
             <div className="relative w-full h-[400px] rounded-lg overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop"
+                src="/Aboutus.jpg"
                 alt="Restaurant interior"
                 fill
                 className="object-cover"
