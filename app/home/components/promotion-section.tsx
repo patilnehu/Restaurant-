@@ -21,7 +21,7 @@ const promotions = [
 
 export default function PromotionSection() {
   return (
-    <section className="py-16">
+    <section className="my-32 md:my-18">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-center gap-8">
           {promotions.map((promo) => (
