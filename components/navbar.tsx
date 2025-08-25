@@ -140,13 +140,11 @@ export default function Navbar() {
           </ul>
 
           <div className="flex items-center space-x-4 text-white">
-            <Link href="/profile">
+            <Link href="">
               <User
                 size={20}
                 className={`${
-                  pathname === "/profile"
-                    ? "text-yellow-400"
-                    : "hover:text-yellow-300"
+                  pathname === "/" ? "text-yellow-400" : "hover:text-yellow-300"
                 }`}
               />
             </Link>
@@ -230,11 +228,11 @@ export default function Navbar() {
 
             <div className="flex items-center justify-between text-white">
               <div className="flex space-x-4">
-                <Link href="/profile" onClick={() => setIsMenuOpen(false)}>
+                <Link href="/" onClick={() => setIsMenuOpen(false)}>
                   <User
                     size={20}
                     className={`${
-                      pathname === "/profile"
+                      pathname === "/"
                         ? "text-yellow-400"
                         : "hover:text-yellow-300"
                     }`}

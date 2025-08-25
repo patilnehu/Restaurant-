@@ -12,9 +12,26 @@ export default function Login() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    console.log("Attempting login with username:", username);
     const success = login(username, password);
-    if (!success) {
+    console.log("Login success:", success);
+    if (success) {
+      // Store username and auth status in localStorage
+      const userData = { username, isAuthenticated: true };
+      console.log("Storing in localStorage:", userData);
+      localStorage.setItem("user", JSON.stringify(userData));
+      // Verify storage
+      console.log(
+        "Data in localStorage after set:",
+        localStorage.getItem("user")
+      );
+      // Clear form fields
+      setUsername("");
+      setPassword("");
+      setError("");
+    } else {
       setError("Invalid username or password");
+      console.log("Login failed");
     }
   };
 

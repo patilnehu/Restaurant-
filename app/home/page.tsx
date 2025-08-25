@@ -17,7 +17,7 @@ export default function Home() {
         fill
         className="object-cover"
       />
-      <div className="container mx-auto px-4 md:px-8 py-36 md:py-40">
+      <div className="container mx-auto px-4 md:px-8 mt-32 py-36 md:py-28">
         <div className="max-w-xl text-white opacity-90">
           <h1 className="dancing-script text-4xl md:text-6xl font-bold mb-4">
             Fast Food Restaurant

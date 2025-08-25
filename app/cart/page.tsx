@@ -58,6 +58,8 @@ export default function CartPage() {
                             )}`
                           }
                           alt={item.name}
+                          width={200}
+                          height={200}
                           className="w-16 h-16 sm:w-20 sm:h-20 object-cover rounded-md"
                         />
                         <div>
